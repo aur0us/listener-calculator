@@ -38,7 +38,8 @@ public class Worker extends CalculatorBaseListener {
         public void exitAdd (CalculatorParser.AddContext ctx){
                 float op1 = numStack.pop();
                 float op2 = numStack.pop();
-                numStack.push(op1 + op2);
+                float result = op1 + op2;
+                numStack.push(result);
         }
 
         @Override
@@ -60,17 +61,20 @@ public class Worker extends CalculatorBaseListener {
 
         @Override
         public void exitDiv (CalculatorParser.DivContext ctx){
-
+                float op1 = numStack.pop();
+                float op2 = numStack.pop();
+                numStack.push(op2/op1);
         }
 
         @Override
         public void enterMul (CalculatorParser.MulContext ctx){
-
         }
 
         @Override
         public void exitMul (CalculatorParser.MulContext ctx){
-
+                float op1 = numStack.pop();
+                float op2 = numStack.pop();
+                numStack.push(op1*op2);
         }
 
         @Override
@@ -80,7 +84,9 @@ public class Worker extends CalculatorBaseListener {
 
         @Override
         public void exitMod (CalculatorParser.ModContext ctx){
-
+                float op1 = numStack.pop();
+                float op2 = numStack.pop();
+                numStack.push(op2%op1);
         }
 
         @Override
